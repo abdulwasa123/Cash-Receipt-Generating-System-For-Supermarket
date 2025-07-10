@@ -6,18 +6,15 @@
   <title>Cash Receipt Generating System For Supermarket</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <!-- ✅ Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
-  <!-- Site Header -->
   <header class="site-header">
     <h1>🧾 CASH RECEIPT GENERATING SYSTEM</h1>
     <p>Your trusted supermarket receipt generator</p>
   </header>
 
   <div class="container">
-    <!-- Receipt Form -->
     <div class="form-section">
       <h2>CASH RECEIPT</h2>
 
@@ -53,12 +50,56 @@
       <div class="row">
         <div class="form-group">
           <label>Store Name</label>
-          <input type="text" id="storeName" value="AYOMIDE GROCERY MART">
+          <input type="text" id="storeName" value="AYOMIDE GROCERY MART" readonly>
         </div>
         <div class="form-group">
           <label>Cashier ID</label>
           <input type="text" id="cashierId" value="CASH101">
         </div>
+      </div>
+
+      <!-- ✅ Fixed Items Section -->
+      <div class="form-group">
+        <label>Select Fixed Item</label>
+        <div style="display: flex; gap: 10px;">
+          <select id="fixedItemDropdown">
+            <option disabled selected value="">-- Choose an Item --</option>
+            <option value="Milk|4.50">Milk - $4.50</option>
+            <option value=" Tomato|1.50">Tomato - $1.50</option>
+            <option value="Soap|2.50">Soap - $2.50</option>
+            <option value="Sugar|1.23">Sugar - $1.23</option>
+            <option value="Salt|2.00">Salt - $2.00</option>
+            <option value="Bread|2.00">Bread - $2.00</option>
+            <option value="Eggs|3.00">Egg - $3.00</option>
+            <option value="Rice|5.75">Rice - $5.75</option>
+          </select>
+          <button type="button" onclick="addFixedItem()">Add</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Added Fixed Items</label>
+        <ul id="fixedItemList" style="list-style-type: none; padding-left: 0; margin-top: 10px;"></ul>
+      </div>
+
+      <!-- ✅ Custom Items Section -->
+      <div class="form-group">
+        <label>Custom Item Name</label>
+        <input type="text" id="customItemName" placeholder="e.g., Biscuit">
+      </div>
+
+      <div class="form-group">
+        <label>Custom Item Price ($)</label>
+        <input type="number" id="customItemPrice" placeholder="e.g., 2.25">
+      </div>
+
+      <div class="form-group">
+        <button type="button" onclick="addCustomItem()">Add Custom Item</button>
+      </div>
+
+      <div class="form-group">
+        <label>Added Custom Items</label>
+        <ul id="customItemList" style="list-style-type: none; padding-left: 0; margin-top: 10px;"></ul>
       </div>
 
       <div class="form-group">
@@ -96,7 +137,6 @@
       </div>
     </div>
 
-    <!-- Receipt Preview -->
     <div class="preview-section">
       <div class="preview-header">
         <h3>Live Preview</h3>
@@ -108,6 +148,10 @@
         <p><strong>Cashier:</strong> <span id="previewCashier">CASH101</span></p>
         <p><strong>Date:</strong> <span id="previewDate">01/06/2025</span></p>
         <p><strong>Items:</strong> <span id="previewItems">12</span></p>
+
+        <!-- ✅ Show Items in Preview -->
+        <div id="previewItemList" style="margin: 10px 0;"></div>
+
         <p><strong>Subtotal:</strong> $<span id="previewSubtotal">95.00</span></p>
         <p><strong>Tax (7.5%):</strong> $<span id="previewTax">7.13</span></p>
         <p><strong>Discount:</strong> $<span id="previewDiscount">5.00</span></p>
@@ -125,7 +169,6 @@
     </div>
   </div>
 
-  <!-- Site Footer -->
   <footer class="site-footer">
     <p>&copy; 2025 Ayomide Grocery Mart — Receipt System. All rights reserved.</p>
   </footer>
