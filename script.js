@@ -123,7 +123,7 @@ function updateReceipt() {
     ul.style.paddingLeft = '20px';
     allItems.forEach(item => {
       const li = document.createElement('li');
-      li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+      li.textContent = `${item.name} - ₦${item.price.toFixed(2)}`;
       ul.appendChild(li);
     });
     previewList.appendChild(ul);
