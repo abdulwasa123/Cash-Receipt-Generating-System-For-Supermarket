@@ -37,7 +37,7 @@ function addFixedItem() {
   // Add to UI
   const list = document.getElementById('fixedItemList');
   const li = document.createElement('li');
-  li.textContent = `${itemName} - $${price.toFixed(2)}`;
+  li.textContent = `${itemName} - ₦${price.toFixed(2)}`;
   list.appendChild(li);
 
   dropdown.selectedIndex = 0;
@@ -61,7 +61,7 @@ function addCustomItem() {
   // Add to UI
   const list = document.getElementById('customItemList');
   const li = document.createElement('li');
-  li.textContent = `${name} - $${price.toFixed(2)}`;
+  li.textContent = `${name} - ₦${price.toFixed(2)}`;
   list.appendChild(li);
 
   nameInput.value = '';
